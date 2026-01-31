@@ -1,82 +1,130 @@
-# 🦀 Learning Rust (The Rust Programming Language — 2021)
+# 🦀 rust-up-knowledge
 
-This repository is my **personal practice space** for working through  
+**rust-up-knowledge** is my **personal Rust knowledge base** — a big, evolving cheatsheet built while working through  
 **_The Rust Programming Language (2021 Edition)_** (aka *the Rust Book*).
 
-The purpose here is simple:
-> learn Rust by writing Rust — making mistakes, fixing them, and understanding *why* things work (or don’t).
+Instead of focusing on runnable code or projects, this repo is about:
+> collecting, compressing, and revisiting Rust knowledge in a way that’s easy to skim, recall, and “brush up” later.
 
-This is **not** a tutorial repo or a finished project. It’s a learning log.
+(Yes, the name is a playful take on *“brush up knowledge”*.)
 
 ---
 
-## 📘 What I’m Using
+## 📘 Source Material
 
 - Book: *The Rust Programming Language (2021 Edition)*
 - Official link: https://doc.rust-lang.org/book/
 - Rust edition: **2021**
-- Tooling: `rustc`, `cargo`
+
+The Rust Book is the backbone, but this repo also includes:
+- Personal explanations
+- Mental models
+- Common pitfalls
+- Patterns worth remembering
+- “Why this exists” notes
 
 ---
 
-## 🎯 Goals
+## 🎯 Purpose & Philosophy
 
-- Get comfortable with **ownership, borrowing, and lifetimes**
-- Learn how to *read* Rust compiler errors instead of fighting them
-- Write small, focused Rust programs
-- Build intuition for how Rust wants code to be structured
-- Slowly move from “following the book” → “thinking in Rust”
+This repository is **not**:
+- A tutorial
+- A set of polished examples
+- A Cargo workspace
+- A reference replacement for the official docs
+
+This repository **is**:
+- A **personal cheatsheet**
+- A **Rust memory refresher**
+- A place to dump “things I finally understood”
+- A long-term Rust companion
+
+Think of it as:
+> *Notes I wish I had when coming back to Rust after a few months.*
 
 ---
 
-## 📂 Repository Structure
+## 🧠 How It’s Structured
 
-The layout roughly follows the book chapters, with room to experiment:
+Each Rust Book chapter maps to a **single knowledge file or section**, focused on **concepts**, not code volume.
+
+The idea is that each chapter acts like a **drop-down box of distilled knowledge** — something I can quickly open, skim, and close.
+
+Example structure:
+
 ```
 .
-├── chapter_01_hello_world/
-├── chapter_02_guessing_game/
-├── chapter_03_common_concepts/
-├── chapter_04_ownership/
-├── chapter_05_structs/
-├── chapter_06_enums_match/
-├── chapter_07_packages_crates/
-├── chapter_08_collections/
-├── chapter_09_error_handling/
-├── chapter_10_generics_traits/
-├── chapter_11_testing/
-├── chapter_12_io_project/
-├── chapter_13_functional_features/
-├── chapter_14_cargo_more/
-├── chapter_15_smart_pointers/
-├── chapter_16_fearless_concurrency/
-├── chapter_17_oop_features/
-├── chapter_18_patterns_matching/
-├── chapter_19_advanced_features/
-├── chapter_20_final_project/
-├── experiments/
-└── notes/
+├── chapters/
+│   ├── 01_hello_world.md
+│   ├── 02_guessing_game.md
+│   ├── 03_common_concepts.md
+│   ├── 04_ownership.md
+│   ├── 05_structs.md
+│   ├── 06_enums_and_match.md
+│   ├── 07_packages_crates_modules.md
+│   ├── 08_collections.md
+│   ├── 09_error_handling.md
+│   ├── 10_generics_traits_lifetimes.md
+│   ├── 11_testing.md
+│   ├── 12_io_project.md
+│   ├── 13_functional_language_features.md
+│   ├── 14_more_about_cargo.md
+│   ├── 15_smart_pointers.md
+│   ├── 16_fearless_concurrency.md
+│   ├── 17_oop_features.md
+│   ├── 18_patterns_and_matching.md
+│   ├── 19_advanced_features.md
+│   └── 20_final_project.md
+└── README.md
 ```
-yaml
-Copy code
-
-### What goes where?
-
-- **`chapter_*`**  
-  Code written while following specific Rust Book chapters.
-
-- **`experiments/`**  
-  Small side experiments when I want to test an idea or compiler behavior.
-
-- **`notes/`**  
-  Personal notes, explanations, and “aha” moments — mostly for future me.
 
 ---
 
-## ▶️ Running the Code
+## ✍️ What Each Chapter Contains
 
-Most directories are standalone Cargo projects.
+Each chapter file typically includes:
+- Short explanations in my own words
+- Key rules and invariants
+- Rust-specific terminology
+- Common mistakes and compiler complaints
+- “This finally clicked when…” notes
+- Minimal code snippets **only when helpful**
 
-```bash
-cd chapter_04_ownership
-cargo run
+The emphasis is always on **understanding and recall**, not completeness.
+
+---
+
+## 🧭 How I Use This Repo
+
+- As a **study companion** while reading the Rust Book
+- As a **quick refresher** before writing Rust again
+- As a place to solidify concepts that felt confusing the first time
+- As a low-pressure space to write things *for myself*, not an audience
+
+This repo may contain:
+- Redundant explanations
+- Over-simplifications
+- Opinions
+- Notes that only make sense to me
+
+That’s intentional 🙂
+
+---
+
+## 📜 License
+
+- Original content in this repo: **MIT License**
+- The Rust Book content belongs to the Rust Project  
+  (no large sections copied verbatim)
+
+---
+
+## 🔗 Helpful References
+
+- Rust Book: https://doc.rust-lang.org/book/
+- Rust std docs: https://doc.rust-lang.org/std/
+- Rust Playground: https://play.rust-lang.org/
+
+---
+
+🦀 *Rust knowledge, brushed up and kept sharp.*
