@@ -5,9 +5,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'Rust Up Knowledge',
+  tagline: 'Keep your Rust sharp. Not rusty.',
+  favicon: 'img/rust-up-knowledge.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -39,28 +39,28 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        // docs: {
+        //   sidebarPath: './sidebars.ts',
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        // },
+        // blog: {
+        //   showReadingTime: true,
+        //   feedOptions: {
+        //     type: ['rss', 'atom'],
+        //     xslt: true,
+        //   },
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        //   // Useful options to enforce blogging best practices
+        //   onInlineTags: 'warn',
+        //   onInlineAuthors: 'warn',
+        //   onUntruncatedBlogPosts: 'warn',
+        // },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -69,28 +69,34 @@ const config: Config = {
   ],
 
   themeConfig: {
+    announcementBar: {
+      id: 'rust-up-knowledge-announce-1',
+      backgroundColor: '#7063f3',
+      isCloseable: false,
+      content:
+      `My personal Rust knowledge base, built while working through the Rust Book (2021). ` +
+      `<a href="/rust-up-knowledge/docs/intro">Start here</a>`,
+    }, // make this font bolder
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
-    navbar: {
-      title: 'My Site',
+    navbar: { // right underneath the announcement bar
+      title: 'Rust Up Knowledge',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Rust Up Knowledge',
+        src: 'img/rust.png',
       },
+      hideOnScroll: true,
       items: [
+        {to: '/docs/intro', label: 'Start reading', position: 'left'},
+        {to: '/docs/cheatsheet', label: 'Cheatsheet', position: 'left'},
+        {to: 'https://doc.rust-lang.org/book/appendix-01-keywords.html', label: 'Keywords', position: 'left'},
+        {to: 'https://doc.rust-lang.org/book/appendix-02-operators.html', label: 'Operators/Symbols', position: 'left'},
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          href: 'https://github.com/boba-jjang/rust-up-knowledge',
+          label: 'Github',
           position: 'right',
         },
       ],
@@ -99,46 +105,49 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Rust',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'The Rust Book',
+              href: 'https://doc.rust-lang.org/book/',
+            },
+            {
+              label: 'Rust Std Library',
+              href: 'https://doc.rust-lang.org/std/',
+            },
+            {
+              label: 'Rust by Example',
+              href: 'https://doc.rust-lang.org/rust-by-example/',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Playground',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Rust Playground',
+              href: 'https://play.rust-lang.org/',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Compiler Explorer (Godbolt)',
+              href: 'https://godbolt.org/',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Project',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Rust Up Knowledge (GitHub)',
+              href: 'https://github.com/boba-jjang/rust-up-knowledge',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `
+        © ${new Date().getFullYear()} boba-jjang · Rust Up Knowledge  
+        <br />
+      `,
     },
     prism: {
       theme: prismThemes.github,

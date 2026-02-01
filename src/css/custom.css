@@ -4,27 +4,108 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Center announcement bar content */
+div[class^='announcementBar_'] {
+  text-align: center;
+  font-weight: 600; /* bolder as you requested */
+}
+/* =========================================
+   Indigo theme for Rust Up Knowledge
+   ========================================= */
+
+/* Light mode */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Brand colors */
+  --ifm-color-primary: #5c63ff;
+  --ifm-color-primary-dark: #4b52e6;
+  --ifm-color-primary-darker: #434ada;
+  --ifm-color-primary-darkest: #343bb8;
+  --ifm-color-primary-light: #8b85ff;
+  --ifm-color-primary-lighter: #a7a3ff;
+  --ifm-color-primary-lightest: #c7c4ff;
+
+  /* Typography & UI */
+  --ifm-font-color-base: #1f2837;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Code highlighting */
+  --docusaurus-highlighted-code-line-bg: rgba(92, 99, 255, 0.12);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Center announcement bar content */
+div[class^='announcementBar_'] {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Dark mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #8b85ff;
+  --ifm-color-primary-dark: #7a74f0;
+  --ifm-color-primary-darker: #6e68e6;
+  --ifm-color-primary-darkest: #5b55cc;
+  --ifm-color-primary-light: #a7a3ff;
+  --ifm-color-primary-lighter: #c7c4ff;
+  --ifm-color-primary-lightest: #e2e0ff;
+
+  --ifm-font-color-base: #e7eaf3;
+
+  --docusaurus-highlighted-code-line-bg: rgba(139, 133, 255, 0.18);
+}
+
+/* Rust Playground embed styling (clean + aligned) */
+.rustPlayground {
+  /* Align with reading column better than 80% */
+  width: 100%;
+  max-width: 980px;
+  margin: 1.5rem auto;
+
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+  border: 1px solid var(--ifm-color-emphasis-300);
+
+  /* Single source of truth */
+  --play-scale: 0.93;
+  --play-height: 520px; /* must match iframe height in MDX */
+}
+
+/* Header bar */
+.rustPlayground::before {
+  content: "Rust Playground";
+  display: block;
+
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  color: var(--ifm-font-color-base);
+  background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* iframe fills card, scales down, and removes bottom gap */
+.rustPlayground iframe {
+  display: block;
+  width: 100%;
+  border: none;
+
+  transform: scale(var(--play-scale));
+  transform-origin: top center;
+
+  /* Key: shrink the layout height to match scaled content */
+  height: calc(var(--play-height) * var(--play-scale));
+}
+
+/* Dark mode */
+[data-theme='dark'] .rustPlayground {
+  background: #0f172a;
+  border-color: #263055;
+}
+
+[data-theme='dark'] .rustPlayground::before {
+  background: linear-gradient(to bottom, #1e293b, #0f172a);
+  border-bottom-color: #263055;
+  color: #e7eaf3;
 }

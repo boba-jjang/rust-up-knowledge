@@ -1,47 +1,22 @@
 ---
 sidebar_position: 1
+title: Getting started
 ---
 
-# Tutorial Intro
+# Getting started
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome — this is **my personal Rust knowledge base** built while working through **_The Rust Programming Language (2021 Edition)_**.
 
-## Getting Started
+It’s mainly designed for **quick recall** — a place to collect notes, mental models,
+and occasionally over-specific details that I personally find useful.
 
-Get started by **creating a new site**.
+## Try Rust quickly
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+<div className="rustPlayground">
+  <iframe
+    src="https://play.rust-lang.org/?edition=2021&code=fn%20main()%20%7B%0A%20%20println!(%22Hello%2C%20Rust!%22)%3B%0A%7D"
+    height="520"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin"
+  />
+</div>

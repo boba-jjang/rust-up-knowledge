@@ -21,3 +21,58 @@
   align-items: center;
   justify-content: center;
 }
+
+.hero {
+  padding: 4.5rem 0 3.5rem;
+  text-align: center;
+}
+
+.heroInner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.heroLogo {
+  width: min(440px, 88vw);
+  height: auto;
+  display: block;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.1;
+  margin: 0;
+
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.heroSubtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 720px;
+
+  margin: 0;
+  margin-top: 0.25rem;
+
+  opacity: 0.85;
+}
+
+.heroCtas {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.heroSecondary {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
