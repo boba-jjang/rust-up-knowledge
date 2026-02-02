@@ -35,6 +35,14 @@ const config: Config = {
     locales: ['en'],
   },
 
+  // ✅ Add fonts here (inside config)
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&display=swap',
+      type: 'text/css',
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -67,8 +75,10 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+  
 
-  themeConfig: {
+
+themeConfig: {
     announcementBar: {
       id: 'rust-up-knowledge-announce-1',
       backgroundColor: '#7063f3',
