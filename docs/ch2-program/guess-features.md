@@ -126,6 +126,8 @@ std::io::stdin()
 ```
 Key points:
 - `stdin()` is a free function defined in the `std::io` module
+> A free function is a function that lives on its own inside a module.
+It does not belong to a struct or type, and it does not operate on `self`.
 - It returns a value of type `Stdin`
 - A handle is a value that represents access to an external resource
 (in this case, the resource is standard input)
@@ -172,7 +174,8 @@ Key points:
 ---
 
 A few expansions on those key points:
-1. `read_line` is a method
+
+##### 1. `read_line` is a method
 
 Once you have a `Stdin` value, you can call methods on it. `read_line` is one of them.
 
@@ -198,14 +201,14 @@ stdin.read_line(&mut guess);
 
 ---
 
-2. What "appends input" means:
+##### 2. What "appends input" means:
 
 `read_line` **does not replace** the contents of the `String` buffer.
 Instead, it adds the input to the end of the existing buffer (including the trailing newline).
 
 ---
 
-3. What `Result<usize>` means
+##### 3. What `Result<usize>` means
 
 Conceptually:
 ```rust
@@ -215,7 +218,7 @@ enum Result<T, E> {
 }
 ```
 This means: 
-- The operation can either **succeed or fail**.:
+- The operation can either **succeed or fail**:
   - `Ok(usize)` means success, and the usize value represents the number of bytes read
   - `Err(io::Error)` means something went wrong during input and must be handled
 
@@ -260,9 +263,9 @@ Its behavior is:
 Therefore, Rust makes error handling explicit by design.
 
 **You cannot**:
-- Accidentally ignore failures
-- Forget that something might go wrong
-- Assume success by default
+- **Accidentally ignore failures**
+- **Forget that something might go wrong**
+- **Assume success by default**
 
 Even in this simple example, Rust forces you to acknowledge:
 
