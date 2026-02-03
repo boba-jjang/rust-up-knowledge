@@ -127,3 +127,23 @@ div[class^='announcementBar_'] {
   border-bottom-color: #263055;
   color: #e7eaf3;
 }
+/* Improve shell / bash code block readability */
+code[class*="language-bash"],
+code[class*="language-shell"] {
+  color: #1f2937; /* dark slate */
+}
+
+[data-theme='dark'] code[class*="language-bash"],
+[data-theme='dark'] code[class*="language-shell"] {
+  color: #e5e7eb; /* soft gray */
+}
+pre[class*="language-bash"],
+pre[class*="language-shell"] {
+  background: #f9fafb;
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+[data-theme='dark'] pre[class*="language-bash"],
+[data-theme='dark'] pre[class*="language-shell"] {
+  background: #0f172a;
+}
