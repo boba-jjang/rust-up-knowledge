@@ -147,3 +147,45 @@ pre[class*="language-shell"] {
 [data-theme='dark'] pre[class*="language-shell"] {
   background: #0f172a;
 }
+
+/* Sharper tables for docs */
+.markdown table {
+  font-size: 0.95rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.markdown th {
+  font-weight: 600;
+  background: var(--ifm-color-emphasis-100);
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+.markdown td {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.markdown code {
+  font-weight: 400;
+}
+
+
+/* Keep dark-mode toggle visible on mobile */
+@media (max-width: 996px) {
+  .navbar__items--right {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Make sure the color mode toggle isn't hidden/collapsed */
+  .navbar__toggle {
+    display: block;
+  }
+
+  /* If the toggle is inside the right items, keep it visible */
+  .navbar__items--right .navbar__item {
+    display: flex;
+  }
+
+}

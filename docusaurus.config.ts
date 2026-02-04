@@ -91,6 +91,7 @@ themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
+      disableSwitch: false,
     },
     navbar: { // right underneath the announcement bar
       title: 'Rust Up Knowledge',
@@ -98,7 +99,7 @@ themeConfig: {
         alt: 'Rust Up Knowledge',
         src: 'img/rust.png',
       },
-      hideOnScroll: true,
+      hideOnScroll: false,
       items: [
         {to: '/docs/intro', label: 'Start reading', position: 'left'},
         {to: '/docs/cheatsheet', label: 'Cheatsheet', position: 'left'},
