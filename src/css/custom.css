@@ -12,9 +12,14 @@ div[class^='announcementBar_'] {
 /* =========================================
    Indigo theme for Rust Up Knowledge
    ========================================= */
-
+/* 
+.docMainContainer_TBSr {
+  max-width: 1800px;
+} */
 /* Light mode */
 :root {
+  --ifm-container-width: 1140px;
+  --ifm-container-width-xl: 1320px;
   /* Brand colors */
   --ifm-color-primary: #5c63ff;
   --ifm-color-primary-dark: #4b52e6;
@@ -42,7 +47,12 @@ div[class^='announcementBar_'] {
   --ifm-line-height-base: 1.6;
 }
 .markdown p {
-  max-width: 80ch;
+  max-width: 95ch;
+}
+.markdown pre,
+.markdown .theme-code-block,
+.rustPlayground {
+  max-width: 100%;
 }
 /* Keep UI/navigation looking crisp (optional but recommended) */
 .navbar,
