@@ -194,7 +194,7 @@ let guess: u32 = match guess.trim().parse() {
 ```
 
 What this does:
-- If parsing succeeds, we get a number (Ok(num))
+- If parsing succeeds, we get a number (`Ok(num)`)
 - If parsing fails, we:
   - Print a helpful message
   - Skip the rest of the loop iteration
