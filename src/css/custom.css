@@ -199,3 +199,6 @@ pre[class*="language-shell"] {
   }
 
 }
+
+img[alt=binding] {width:400px; height: auto;}
+img[alt=shadowing] {width:400px; height: auto;}

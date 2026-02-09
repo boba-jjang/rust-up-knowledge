@@ -4,7 +4,7 @@ slug: /intro
 sidebar_position: 1
 ---
 
-# Getting started
+# Ch 1 - Getting started
 
 Welcome — this is **my personal Rust knowledge base** built while working through **_The Rust Programming Language (2021 Edition)_**.
 

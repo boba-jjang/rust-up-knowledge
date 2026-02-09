@@ -78,12 +78,13 @@ Instead, it means **what operations are allowed through this name (`x` or `y`).*
 ### 2. Why do we use `String::new()`?
 
 `String::new()` is what is known as an *associated function*
+
 Key properties:
 - `String` is a **type** 
 - `new` is an *associated function* **on** `String` (function *belong* to a type)
 - Do not take `self`
 
-This results in a **new, empty** String value, which is useful when you need to explicitly create a value of type `String`. (think of it like `int c = 5;` in `c`).
+This results in a **new, empty** `String` value, which is useful when you need to explicitly create a value of type `String` (think of it like `int c = 5;` in `c`).
 
 Some other examples are as follows:
 ```rust
