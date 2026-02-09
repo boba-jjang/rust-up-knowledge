@@ -151,8 +151,9 @@ In simple terms, this line means:
 This one is different.
 - `rand` → an external **crate**
 - `Rng` → a trait
-Traits are **not modules**.  
-They describe **behavior** that types can implement.
+
+Traits are **not modules**. They describe **behavior** that types can implement.
+
 In simple terms, you can think of a trait as:
 > “A set of methods that a type promises to provide.” or “I want access to the methods defined by the `Rng` trait.”
 

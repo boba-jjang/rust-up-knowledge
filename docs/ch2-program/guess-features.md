@@ -135,12 +135,7 @@ It does not belong to a struct or type, and it does not operate on `self`.
 
 At this stage, we are simply obtaining a safe way to interact with standard input.
 
-To summarize:
-
-Kind	How it’s called	Example
-Free function	module::function()	std::io::stdin()
-Associated function	Type::function()	String::new()
-Method	value.function()	stdin.read_line(...)
+#### To summarize:
 
 | Kind | How it’s called | Example |
 |----------|----------|----------|
