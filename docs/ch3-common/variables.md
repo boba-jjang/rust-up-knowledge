@@ -150,3 +150,238 @@ This works because shadowing creates a new binding, not because Rust allows muta
 ---
 
 ## Basic Types
+
+### Revisiting Type Inference
+
+Similar to other programming languages, Rust also has a set of basic data types.
+
+What’s important in Rust, however, is that **every value has a concrete type**, and that type must be known by the compiler at compile time.
+
+Before moving forward, let’s briefly revisit type inference, which we’ve mentioned earlier.
+
+A quick question; will this code work?
+
+```rust
+let guess = "42".parse().expect("Not a number");
+```
+
+<details>
+<summary><strong>
+The answer is...
+</strong></summary>
+No, because **Rust does not know what tpye you want to parse into**.
+</details>
+
+What does that mean?
+
+Let’s take a closer look.
+
+---
+
+#### Why `let x = 5;` works
+```rust
+let x = 5;
+```
+
+Here, Rust **can** infer the type.
+
+Because:
+- Integer literals like `5` have a default type
+- Rust defaults to `i32` when no other context is provided
+- In other words, the literal `5` already carries enough information to reach into a default choice.
+
+---
+
+#### Why `parse()` is different
+
+On the other hand,
+```rust
+"42".parse()"
+```
+doesn't work because, the signature of `parse` is roughly:
+```rust
+fn parse<T>(&self) -> Result<T, T::Err>
+where
+    T: FromStr
+```
+
+Key point:
+- `T` is a generic type
+- `T` is not fixed
+- It could be `i32`, `u32`, `i64`, `usize`, `f64`, etc.
+
+So when Rust sees this line, it effectively asks:
+
+> “You want to parse this string, but into what type?”
+
+At that point, there simply isn’t enough information yet.
+
+<details>
+<summary><strong>
+How Rust normally infers `parse()` types (there is a small surprise in here)
+</strong></summary>
+
+1. Explicit annotation
+```rust
+let guess: u32 = "42".parse().expect("Not a number");
+```
+
+Now the compiler knows exactly what `T` is supposed to be.
+
+---
+
+2. Inference from later usage
+
+```rust
+let guess = "42".parse().expect("Not a number");
+let x: u32 = guess;
+```
+At first glance, this may look confusing, `guess` is declared before its type is known.
+
+So why does this compile?
+> This is due to **bidirectional type inference / constraint solving** during compilation.
+
+Rust does not type-check each line in isolation and permanently “lock in” types immediately.
+
+Instead, the compiler:
+- **Builds constraints** as it parses/type-checks expressions.
+- **Propagates type information** from *uses* back to *definitions*.
+- Solves them together (per item / function body) before it commits to final types.
+
+**Conceptually, here's what happens**
+
+When the compiler sees 
+```rust
+"42".parse()
+```
+
+It knows:
+- `parse()` returns `Result<T, _>`
+- therefore `guess` would be `T` after `.expect(...)`
+- but `T` **is unknown** (yet)
+
+So Rust keeps `guess` as “some type `T`” with the constraint: `T: FromStr`.
+- Then it sees:
+```
+let x: u32 = guess;
+```
+That adds a new constraint:
+- `guess` must be `u32`
+
+Now the earlier unknown `T` becomes `u32`, and everything resolves.
+
+
+---
+
+3. Method call requires a specific type
+```rust
+let guess = "42".parse::<u32>().expect("Not a number");
+```
+Here, `::<u32>` explicitly tells the generic method `parse` what `T` should be.
+</details>
+
+---
+
+### Scalar Types
+
+A *scalar* type represents a *single value*.
+
+There aren’t many surprises here, so for readers who want more detail, refer to:  
+https://doc.rust-lang.org/book/ch03-02-data-types.html
+
+A summary of all scalar types in Rust:
+
+| Category | Type | Description | Notes |
+|------|------|------------|------|
+| Integer (signed) | `i8` | 8-bit signed integer | −128 to 127 |
+|  | `i16` | 16-bit signed integer | |
+|  | `i32` | 32-bit signed integer | **Default integer type** |
+|  | `i64` | 64-bit signed integer | |
+|  | `i128` | 128-bit signed integer | |
+|  | `isize` | Pointer-sized signed integer | Depends on architecture |
+| Integer (unsigned) | `u8` | 8-bit unsigned integer | 0 to 255 |
+|  | `u16` | 16-bit unsigned integer | |
+|  | `u32` | 32-bit unsigned integer | |
+|  | `u64` | 64-bit unsigned integer | |
+|  | `u128` | 128-bit unsigned integer | |
+|  | `usize` | Pointer-sized unsigned integer | Used for indexing |
+| Floating-point | `f32` | 32-bit floating point | |
+|  | `f64` | 64-bit floating point | **Default float type** |
+| Boolean | `bool` | Boolean value | `true` / `false` |
+| Character | `char` | Single Unicode scalar value | 4 bytes, not ASCII-only |
+
+---
+
+A summary of numeric literal forms in Rust:
+
+| Literal form | Example | Meaning |
+|-------------|--------|---------|
+| Decimal | `42` | Base-10 integer |
+| Decimal (underscores) | `98_222` | Same as `98222` (readability only) |
+| Hexadecimal | `0xff` | Base-16 |
+| Octal | `0o77` | Base-8 |
+| Binary | `0b1010` | Base-2 |
+| Floating-point | `3.14` | `f64` by default |
+| Float (explicit) | `2.0f32` | Explicit float type |
+| Integer (explicit) | `42u8` | Explicit integer type |
+| Scientific notation | `1e6` | Floating-point (`1_000_000.0`) |
+
+---
+
+<details>
+<summary><strong>
+A very common confusion: <code>char</code> vs <code>&amp;str</code> vs <code>String</code>
+</strong></summary>
+
+These three often look similar, but they represent **very different concepts**.
+
+---
+
+#### `char`
+
+```rust
+let c = 'a';
+```
+
+- A **single Unicode scalar value**
+- Fixed size (4 bytes)
+- Not a string
+
+---
+
+#### `&str`
+
+```rust
+let s = "hello";
+```
+
+- A **borrowed string slice**
+- Immutable
+- Points to UTF-8 text stored elsewhere
+- Very cheap to copy
+
+---
+
+#### `String`
+
+```rust
+let s = String::from("hello");
+```
+
+- An **owned**, growable string
+- Heap-allocated
+- Mutable (if the binding allows it)
+
+---
+
+#### Why this matters
+
+Many Rust APIs distinguish between:
+- borrowed text (`&str`)
+- owned text (`String`)
+
+Understanding this distinction becomes critical once ownership and borrowing rules are introduced.
+
+</details>
+
+---

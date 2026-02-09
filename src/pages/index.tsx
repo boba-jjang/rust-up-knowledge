@@ -24,7 +24,7 @@ function HomepageHeader() {
         </h1>
 
         <p className={styles.heroSubtitle}>
-          A giant, collapsible Rust cheatsheet for fast recall
+          A giant, collapsible Rust Cheatsheet for fast recall
         </p>
 
         <div className={styles.heroCtas}>
@@ -34,7 +34,7 @@ function HomepageHeader() {
         </div>
 
         <p className={styles.heroSecondary}>
-          Or jump straight to the <Link to="/docs/cheatsheet">full cheatsheet</Link>.
+          Or jump straight to the <Link to="/docs/Cheatsheet">full Cheatsheet</Link>.
         </p>
       </div>
     </header>
@@ -43,7 +43,7 @@ function HomepageHeader() {
 
 export default function Home(): ReactNode {
   return (
-    <Layout description="A living Rust cheatsheet built from the Rust Book (2021).">
+    <Layout description="A living Rust Cheatsheet built from the Rust Book (2021).">
       <HomepageHeader />
       <main />
     </Layout>

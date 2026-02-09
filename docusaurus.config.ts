@@ -102,7 +102,7 @@ themeConfig: {
       hideOnScroll: false,
       items: [
         {to: '/docs/intro', label: 'Start reading', position: 'left'},
-        {to: '/docs/cheatsheet', label: 'Cheatsheet', position: 'left'},
+        {to: '/docs/Cheatsheet', label: 'Cheatsheet', position: 'left'},
         {to: 'https://doc.rust-lang.org/book/appendix-01-keywords.html', label: 'Keywords', position: 'left'},
         {to: 'https://doc.rust-lang.org/book/appendix-02-operators.html', label: 'Operators/Symbols', position: 'left'},
         {

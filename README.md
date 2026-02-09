@@ -2,7 +2,7 @@
 
 **rust-up-knowledge** is my **personal Rust knowledge base**, published as a small documentation site using **Docusaurus**.
 
-It’s a **living cheatsheet** built while working through  **_The Rust Programming Language (2021 Edition)_** (aka *the Rust Book*).
+It’s a **living Cheatsheet** built while working through  **_The Rust Programming Language (2021 Edition)_** (aka *the Rust Book*).
 
 Instead of focusing on runnable code or projects, this repository is about:
 
@@ -43,7 +43,7 @@ docs/
 │ └── img/
 ├── ch2-guessing-game/
 │ └── ...
-├── cheatsheet/
+├── Cheatsheet/
 │ └── ...
 ├── glossary/
 │ └── ...
