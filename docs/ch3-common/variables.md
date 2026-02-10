@@ -111,6 +111,7 @@ What’s important here is that:
 - **A new binding** named `x` replaces the old one in the current scope
 
 A helpful way of visualizing this (new `x` is overshadowing the first `x`):
+
 ![shadowing](./img/shadowing.png)
 
 <details>
