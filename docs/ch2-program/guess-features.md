@@ -114,7 +114,7 @@ Okay, great, we have a mutable `String`, how does input actually get into it?
 Recall this line of the code:
 ```rust
 io::stdin()
-  .readline(&mut guess)
+  .read_line(&mut guess)
   .expect("Failed to read line");
 ```
 
@@ -171,7 +171,7 @@ Because of this:
 
 ### 2. Reading into an existing buffer
 ```rust
-*.readline(&mut guess)
+io::stdin().read_line(&mut guess)
 ```
 
 Key points:
