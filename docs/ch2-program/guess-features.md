@@ -24,7 +24,7 @@ fn main() {
 }
 ```
 
-For the sake of brevity, I won't be explaining line by line on what this code does, more detail can be found in this link: https://doc.rust-lang.org/stable/book/ch02-00-guessing-game-tutorial.html
+For the sake of brevity, I won't be explaining line by line on what this code does, more detail can be found in this link: https://doc.rust-lang.org/stable/book/ch02-00-guessing-game-tutorial.html#processing-a-guess
 
 However, I want to expand on few concepts (variables and `stdin`) in this page before moving forward
 

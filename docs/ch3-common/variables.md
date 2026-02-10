@@ -287,7 +287,7 @@ Here, `::<u32>` explicitly tells the generic method `parse` what `T` should be.
 A *scalar* type represents a *single value*.
 
 There aren’t many surprises here, so for readers who want more detail, refer to:  
-https://doc.rust-lang.org/book/ch03-02-data-types.html
+https://doc.rust-lang.org/book/ch03-02-data-types.html#scalar-types
 
 A summary of all scalar types in Rust:
 
@@ -530,3 +530,13 @@ This performs a **deep copy** of the string contents.
 
 </details>
 
+---
+
+#### Array
+
+There aren’t many surprises here, so for readers who want more detail, refer to:  
+https://doc.rust-lang.org/book/ch03-02-data-types.html#the-array-type
+
+---
+
+In next section, we will discuss about how functions work in Rust.
