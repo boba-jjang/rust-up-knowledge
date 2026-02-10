@@ -49,7 +49,7 @@ A quick primer on what this means:
 - `[package]`: Contains metadata about your project (name, version, Rust edition, etc.)
 - `[dependencies]`: Lists external crates your project depends on
 
-At the moment, the [dependencies] section is empty, meaning the project only relies on Rust’s standard library.
+At the moment, the `[dependencies]` section is empty, meaning the project only relies on Rust’s standard library.
 
 ---
 
@@ -78,7 +78,7 @@ We won’t dive into those yet, but you’ll see them later as projects grow mor
 
 Once you run `cargo build`, you will see an output that looks similar to below:
 ```bash
-~/rust-up-experiments/ch2-guessing-game (main) » cargo build        jw-jang@J1-PC
+~/rust-up-experiments/ch2-guessing-game (main) » cargo build        
   Updating crates.io index
      Locking 14 packages to latest Rust 1.93.0 compatible versions
       Adding cfg-if v1.0.4
@@ -97,7 +97,7 @@ Once you run `cargo build`, you will see an output that looks similar to below:
   Compiling ppv-lite86 v0.2.21
   Compiling rand_chacha v0.3.1
   Compiling rand v0.8.5
-  Compiling ch2-guessing-game v0.1.0 (/home/jw-jang/rust-up-experiments/ch2-guessing-game)
+  Compiling ch2-guessing-game v0.1.0 (~/rust-up-experiments/ch2-guessing-game)
   Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.95s
 ```
 
@@ -162,7 +162,7 @@ This is important to remember:
 
 ---
 
-### A quick note on thread_rng() and gen_range()
+### A quick note on `thread_rng()` and `gen_range()`
 
 Now that we’ve imported `Rng`, this line makes sense:
 
@@ -238,7 +238,7 @@ Earlier, we saw a line like this:
 rand::thread_rng().gen_range(1..=100);
 ```
 That example felt natural because the explanation was: 
-> "`gen_range` is a method defined by the `Rng` trait"
+> `gen_range` is a method defined by the `Rng` trait
 
 However, when we look at this line:
 ```rust
@@ -255,7 +255,7 @@ stdin.read_line(...)
 rng.gen_range(...)
 ```
 So it’s easy to fall into this mental model:
-> "Methods belong to the type"
+> Methods belong to the type
 
 But in Rust, that's not entirely true. 
 
@@ -326,7 +326,7 @@ Now, with that, let's try to compile the code!
 
 ```bash
 » cargo build 
-   Compiling ch2-guessing-game v0.1.0 (/home/jw-jang/rust-up-experiments/ch2-guessing-game)
+   Compiling ch2-guessing-game v0.1.0 (~/rust-up-experiments/ch2-guessing-game)
 error[E0308]: mismatched types
   --> src/main.rs:33:19
    |
