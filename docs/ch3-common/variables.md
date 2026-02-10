@@ -385,3 +385,148 @@ Understanding this distinction becomes critical once ownership and borrowing rul
 </details>
 
 ---
+
+### Compound Types
+
+A *compound type* group multiple values into one type. There are two primitive compound types in Rust: tuples and arrays.
+
+#### Tuple
+
+```rust
+let tup: (i32, f64, u8) = (500, 6.4, 1)
+```
+
+A tuple is a general way of grouping together a number of **values** (possibly of different types) into a single compound value.
+
+Key points:
+- Tuples have a **fixed length**
+- In the example above, the name `tup` is bound to the **entire tuple**, because the tuple itself is a single value
+
+---
+
+A programmer can *destructure* a tuple to access its individual elements.
+
+Using the same example again:
+
+```rust
+fn main() {
+    let tup = (500, 6.4, 1);
+}
+```
+
+Here are several common ways to access tuple elements.
+
+---
+
+1. Direct access:
+```rust
+println("second = {}", tup.1);
+```
+
+---
+
+2. Ignore elements with `_`:
+```rust
+let (_, x2, _) = tup;
+println!("{x2}");
+```
+
+---
+
+
+3. Destructure nested tuples
+```rust
+let tup = ((1, 2), 3); // original code slightly modified
+let ((a, b), c) = tup;
+println!("{a} {b} {c}");
+```
+
+---
+
+
+4. Destructure in `match`
+```rust
+match tup {
+    (a, b, c) => println!("{a} {b} {c}"),
+}
+```
+
+---
+
+
+5. Destructure in function parameters
+```rust
+fn print_second((_, second, _): (i32, f64, i32)) {
+    println!("{second}");
+}
+
+fn main() {
+    print_second((500, 6.4, 1));
+}
+```
+
+---
+
+
+6. Borrow instead of move using `ref` 
+```rust
+fn main() {
+    let tup = (String::from("text"), 6.4, 1);
+
+    let (ref s, x2, x3) = tup;
+    // s: &String (borrowed) | x2, x3: copied (f64 and i32 implement Copy)
+
+    println!("{s}, {x2}, {x3}");
+    println!("{}", tup.0); // still usable because the String was not moved
+}
+```
+
+<details>
+<summary><strong>
+Why destructuring exists
+</strong></summary>
+Destructuring is part of Rust’s general **pattern matching** system. It allows you to:
+
+- bind multiple names at once (`(x1, x2, x3)`)
+- ignore values you don’t care about (`_`)
+- control ownership when extracting values (move vs borrow vs copy)
+---
+
+#### Move vs Copy vs Borrow in destructuring
+
+So one of the points made earlier was: Borrow instead of move using `ref`.
+
+We’ll cover ownership more deeply later, but here’s a quick summary.
+
+- **Borrow** (`ref s`)  
+  `s` becomes a reference to the `String` stored inside `tup`.  
+  No data is duplicated, and **ownership remains with `tup`**.
+
+- **Copy** (`x2`, `x3`)  
+  `x2` and `x3` are copied because `f64` and `i32` implement the `Copy` trait.  
+  For these simple scalar types, copying is a cheap, bitwise operation.
+
+- **Move** (without `ref`)  
+```rust
+let (s, x2, x3) = tup;
+```
+In this case:
+- `String` **does not** implement `Copy`
+- ownership of the `String` is **moved out of `tup`**
+- `tup.0` can no longer be used afterward
+
+This design makes sense because a `String` is not just raw bytes — it is a small struct containing:
+- a pointer to heap memory
+- a length
+- a capacity
+
+To explicitly duplicate the string data, you must opt in:
+
+```rust
+let s = tup.0.clone();
+```
+
+This performs a **deep copy** of the string contents.
+
+</details>
+
