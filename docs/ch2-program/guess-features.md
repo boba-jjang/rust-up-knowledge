@@ -239,9 +239,9 @@ This naturally leads to how Rust handles failures explicitly—often using `.exp
 
 ### 3. Handling failure explicitly with `.expect()`
 ```rust
-*.*.expect("Failed to read line");
+std::io::stdin().expect("Failed to read line");
 ```
-At this point, we know that read_line returns a `Result<usize>` — meaning the operation can **succeed or fail**.
+At this point, we know that `read_line` returns a `Result<usize>` — meaning the operation can **succeed or fail**.
 
 Rust does not allow you to ignore that fact.
 
